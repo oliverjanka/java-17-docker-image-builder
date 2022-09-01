@@ -1,8 +1,7 @@
-FROM eclipse-temurin:17-alpine AS builder
+FROM maven:3.8.6-eclipse-temurin-17-alpine AS builder
 RUN apk --no-cache add git
-RUN apk --no-cache add maven
 ARG REPOSITORY
-ARG BRANCH
+ARG BRANCH=master
 WORKDIR /build
 # Clone repository
 RUN git clone -b ${BRANCH} --single-branch ${REPOSITORY} .
